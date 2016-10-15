@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="Entity.Account" table="account">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="native"/>
+    </id> 
+  
+    <many-to-one name="employee" class="Entity.Employee">
+      <column name="employee_id" not-null="true"></column>
+    </many-to-one>
+  
+    <property name="accunt_type" type="java.lang.String">
+      <column name="accunt_type" not-null="true" />
+    </property>
+  
+    <property name="account_money" type="java.lang.Double">
+      <column name="account_money" not-null="true" />
+    </property>
+  
+    <property name="sheet_id" type="java.lang.Integer">
+      <column name="sheet_id" not-null="true" />
+    </property>
+  
+    <property name="accunt_time" type="java.util.Date">
+      <column name="accunt_time" not-null="false"/>
+    </property>
+  
+ </class>
+</hibernate-mapping>
