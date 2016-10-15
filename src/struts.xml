@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <package name="default" namespace="/" extends="struts-default">     
+   
+   	    <interceptors> 
+	        <interceptor name="EmployeeIterception" class="Interceptor.EmployeeInterceptor"></interceptor>  
+	    </interceptors>
+   
+   	    <global-results>
+	        <result name="input">/Login.jsp</result>
+	        <result name="error">/Error.jsp</result>
+	    </global-results> 
+    
+        <action name="employeeLogin" class="Action.EmployeeActionImpl" method="employeeLogin">
+            <result name="success">/Employee_Center.jsp</result>    
+            <result name="middlemaneger">/Middle_Maneger_Center.jsp</result>  
+            <result name="highemaneger">/High_Messager_Center.jsp</result>  
+        </action>
+    
+        <action name="employeeQueryVoucher" class="Action.EmployeeActionImpl" method="employeeQueryVoucher">
+            <result name="success">/Query_Voucher_Result.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+         <action name="middleManegerQueryVoucher" class="Action.EmployeeActionImpl" method="middleManegerQueryVoucher">
+            <result name="success">/Middle_Maneger_Voucher.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+         <action name="highManegerQueryVoucher" class="Action.EmployeeActionImpl" method="highManegerQueryVoucher">
+            <result name="success">/High_Manager_Voucher.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="employeeLoginOut" class="Action.EmployeeActionImpl" method="employeeloginOut">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="addVoucher" class="Action.VoucherActionImpl" method="addVoucher">
+            <result name="success">/AddVoucher.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="getVoucherDetail" class="Action.VoucherActionImpl" method="getVoucherDetail">
+            <result name="success">/Voucher_Detail.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="getVoucher" class="Action.VoucherActionImpl" method="getVoucher">
+            <result name="success">/Modify_Voucher.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="midifyVoucher" class="Action.VoucherActionImpl" method="midifyVoucher">
+            <result name="success">/Employee_Center.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="deleteVoucher" class="Action.VoucherActionImpl" method="deleteVoucher">
+            <result name="success">/Employee_Center.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="getVoucherForCheck" class="Action.Check_ResultActionImpl" method="getVoucher">
+            <result name="success">/Check.jsp</result>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+        <action name="getCheckResult" class="Action.Check_ResultActionImpl" method="getCheckResult">
+            <result name="middlemaneger">/Middle_Maneger_Center.jsp</result>  
+            <result name="highemaneger">/High_Messager_Center.jsp</result> 
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <interceptor-ref name="EmployeeIterception"></interceptor-ref>
+        </action>
+        
+    </package>
+</struts>    

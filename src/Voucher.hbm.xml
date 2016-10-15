@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="Entity.Voucher" table="voucher">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="native"/>
+    </id> 
+  
+    <many-to-one name="employee1" class="Entity.Employee" fetch="select" lazy="false">
+      <column name="nextdealby_id" not-null="true" />
+    </many-to-one>
+  
+    <many-to-one name="employee2" class="Entity.Employee" fetch="select" lazy="false">
+      <column name="creator_id" not-null="true" />
+    </many-to-one>
+  
+    <property name="create_time" type="java.util.Date">
+      <column name="create_time" not-null="true" />
+    </property>
+  
+    <property name="event" type="java.lang.String">
+      <column name="event" not-null="true" />
+    </property>
+  
+    <property name="total_account" type="java.lang.Double">
+      <column name="total_account" not-null="false"/>
+    </property>
+    
+   <property name="status" type="java.lang.String">
+      <column name="status" not-null="true" />
+    </property>
+    
+    <bag name="voucher_detail" cascade="all" table="voucher_detail" fetch="select" lazy="true">
+      <key>
+        <column name="voucher_id" not-null="true"/>
+      </key>
+      <one-to-many class="Entity.Voucher_Detail" />
+    </bag>
+    
+ </class>
+</hibernate-mapping>
